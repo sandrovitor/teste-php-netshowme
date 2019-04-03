@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8"/>
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+	<meta name="author" content="Sandro Mendonça">
+	<meta name="robots" content="index,follow">
+    <title>Teste PHP</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // verifica o tamanho do arquivo antes de enviar.
+            $(document).on('change', 'input[type="file"]',function(){
+                if($(this).val().length != '' && $(this)[0].files[0].size > 512000) {
+                    alert('Arquivo muito grande. Limite de 500KB.');
+                    $(this).val('');
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-8 offset-md-2">
+                <h2 class="text-center"><strong>Formulário de contato</strong></h2>
+                <div class="card">
+                    <div class="card-body">
+                            <form method="post" action="process.php" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label>Nome</label>
+                                    <input class="form-control" type="text" name="nome" autofocus maxlength="40" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>E-mail</label>
+                                    <input class="form-control" type="email" name="email" maxlength="40" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Telefone (com DDD)</label>
+                                    <input class="form-control" type="text" name="telefone" maxlength="15" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Mensagem</label>
+                                    <textarea class="form-control" name="mensagem" maxlength="400" required></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Arquivo</label>
+                                    <input class="form-control" type="file" name="arquivo" required>
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-success" type="submit">Enviar formulário</button>
+                                </div>
+                            </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
